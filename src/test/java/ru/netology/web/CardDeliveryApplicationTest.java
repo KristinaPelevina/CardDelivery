@@ -44,7 +44,41 @@ public class CardDeliveryApplicationTest {
         }
     }
 
+    @Test
+    void shouldSubmitRequestIfNameWithHyphen() {
+        form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
+        form.$(cssSelector("[name=name]")).sendKeys("Анна-Мария Пелевина");
+        form.$(cssSelector("[name=phone]")).sendKeys("+79061975882");
+        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(byText("Забронировать")).click();
+        $(cssSelector(".notification__content")).waitUntil(Condition.visible, 15000).shouldHave(text(date));
+    }
 
+    @Test
+    void shouldSubmitRequestIfCityWithHyphen() {
+        form.$(cssSelector("[data-test-id=city] input")).sendKeys("Петропавловск-Камчатский");
+        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
+        form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
+        form.$(cssSelector("[name=phone]")).sendKeys("+79061975882");
+        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(byText("Забронировать")).click();
+        $(cssSelector(".notification__content")).waitUntil(Condition.visible, 15000).shouldHave(text(date));
+    }
 
-
+    @Test
+    void shouldSubmitRequestIfDataValid() {
+        form.$(cssSelector("[data-test-id=city] input")).sendKeys("Петропавловск-Камчатский");
+        form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
+        form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
+        form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
+        form.$(cssSelector("[name=phone]")).sendKeys("+79061975882");
+        form.$(cssSelector("[data-test-id=agreement]")).click();
+        form.$(byText("Забронировать")).click();
+        $(cssSelector(".notification__content")).waitUntil(Condition.visible, 15000).shouldHave(text(date));
+    }
 }
+
+
