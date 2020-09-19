@@ -33,7 +33,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldSubmitRequest() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -45,7 +45,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldSubmitRequestIfNameWithHyphen() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Анна-Мария Пелевина");
@@ -57,19 +57,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldSubmitRequestIfCityWithHyphen() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Петропавловск-Камчатский");
-            form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
-            form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
-            form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
-            form.$(cssSelector("[name=phone]")).sendKeys("+79061975882");
-            form.$(cssSelector("[data-test-id=agreement]")).click();
-            form.$(byText("Забронировать")).click();
-            $(cssSelector(".notification__content")).waitUntil(Condition.visible, 15000).shouldHave(text(date));
-        }
-
-        @Test
-        void shouldSubmitRequestIfDataValid() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Петропавловск-Камчатский");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Улан-Удэ");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -95,9 +83,8 @@ public class CardDeliveryApplicationTest {
             $(byText("Поле обязательно для заполнения")).waitUntil(Condition.visible, 15000);
         }
 
-
         @Test
-        void shouldNotSubmitRequestIfIncorrectCity() {
+        void shouldNotSubmitRequestIfCityIncorrect() {
             form.$(cssSelector("[data-test-id=city] input")).sendKeys("Лондон");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
@@ -126,7 +113,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfNameIsEmpty() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("");
@@ -139,7 +126,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfNameInLatin() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Rhbcnbyf Gtktdbyf");
@@ -151,7 +138,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfOnlyName() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина");
@@ -163,7 +150,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfNameWithSymbols() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("--------------------");
@@ -179,7 +166,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfTelephoneIsEmpty() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -191,7 +178,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfTelephone12Symbols() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -203,7 +190,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfTelephone10Symbols() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -215,7 +202,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfTelephoneWithoutPlus() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -227,7 +214,7 @@ public class CardDeliveryApplicationTest {
 
         @Test
         void shouldNotSubmitRequestIfTelephoneWithSymbols() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -238,12 +225,12 @@ public class CardDeliveryApplicationTest {
         }
     }
 
-     @Nested
-    public class AgreeTests{
+    @Nested
+    public class AgreeTests {
 
         @Test
         void shouldNotSubmitRequestWithoutAgreement() {
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys(date);
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
@@ -254,18 +241,18 @@ public class CardDeliveryApplicationTest {
     }
 
     @Nested
-    public class DataTests{
+    public class InputDateTests {
 
         @Test
-        void shouldNotSubmitRequestIfDataIsEmpry(){
-            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Омск");
+        void shouldNotSubmitRequestIfDateIsEmpty() {
+            form.$(cssSelector("[data-test-id=city] input")).sendKeys("Екатеринбург");
             form.$(cssSelector("[data-test-id=date] input")).doubleClick().sendKeys(Keys.DELETE);
             form.$(cssSelector("[data-test-id=date] input")).sendKeys("");
             form.$(cssSelector("[name=name]")).sendKeys("Кристина Пелевина");
             form.$(cssSelector("[name=phone]")).sendKeys("+79061975882");
+            form.$(cssSelector("[data-test-id=agreement]")).click();
             form.$(byText("Забронировать")).click();
             $(byText("Неверно введена дата")).waitUntil(Condition.visible, 15000);
         }
     }
 }
-
